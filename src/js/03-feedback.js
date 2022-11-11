@@ -6,7 +6,7 @@ const message = document.querySelector("textarea[name=message]");
 
 const form = document.querySelector('form');
 
-const onSumbit = (event) => {
+const onSubmit = (event) => {
     event.preventDefault();
     localStorage.removeItem(feedbackFormState);
     console.log({
@@ -16,13 +16,13 @@ const onSumbit = (event) => {
     form.reset();
 }
 
-form.addEventListener('submit', onSumbit);
+form.addEventListener('submit', onSubmit);
 
 const localStorage = window.localStorage;
 
 console.log(localStorage);
 
-const onHandleInput = (event) => {
+const onInput = (event) => {
     localStorage.setItem(feedbackFormState, JSON.stringify({
         email: form.elements.email.value,
         message: form.elements.message.value
@@ -36,6 +36,6 @@ const setValues = () => {
     message.value = dataFormState.message;
 }
 
-form.addEventListener('input', throttle(onHandleInput, 500));
+form.addEventListener('input', throttle(onInput, 500));
 
 setValues();
