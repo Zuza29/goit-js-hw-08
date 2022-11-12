@@ -32,8 +32,10 @@ const onInput = (event) => {
 const setValues = () => {
     const formState = localStorage.getItem(feedbackFormState);
     const dataFormState = JSON.parse(formState);
-    email.value = dataFormState.email;
-    message.value = dataFormState.message;
+    if (dataFormState) {
+        email.value = dataFormState.email;
+        message.value = dataFormState.message;
+    }
 }
 
 form.addEventListener('input', throttle(onInput, 500));
